@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Support Helpdesk & Ticketing System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <h2>🛠️ IT Helpdesk System</h2>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Ringkasan Statistik -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Tiket</h3>
+        <p id="stat-total">0</p>
+      </div>
+      <div class="stat-card open">
+        <h3>Baru Masuk</h3>
+        <p id="stat-open">0</p>
+      </div>
+      <div class="stat-card process">
+        <h3>Dalam Proses</h3>
+        <p id="stat-process">0</p>
+      </div>
+      <div class="stat-card resolved">
+        <h3>Selesai</h3>
+        <p id="stat-resolved">0</p>
+      </div>
+    </section>
+
+    <div class="main-content">
+      <!-- Form Input Tiket Baru -->
+      <section class="card form-section">
+        <h3>📥 Buat Tiket Kendala Baru</h3>
+        <form id="ticket-form">
+          <div class="form-group">
+            <label for="reporter">Nama Pelapor / Karyawan</label>
+            <input type="text" id="reporter" placeholder="Contoh: David" required>
+          </div>
+
+          <div class="form-group">
+            <label for="department">Departemen / Unit Kerja</label>
+            <select id="department" required>
+              <option value="">-- Pilih Departemen --</option>
+              <option value="Administrasi / Keuangan">Keuangan</option>
+              <option value="Operasional / Pabrik">Administrasi</option>
+              <option value="SDM / HRD">SDM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Kategori Kendala</label>
+            <select id="category" required>
+              <option value="">-- Pilih Kategori --</option>
+              <option value="Hardware / Monitor">Hardware</option>
+              <option value="Software / Aplikasi">Software</option>
+              <option value="Jaringan / Internet">Jaringan / LAN / Wi-Fi</option>
+              <option value="CCTV / K3 Keamanan">Sistem CCTV</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="priority">Tingkat Prioritas</label>
+            <select id="priority" required>
+              <option value="Rendah">Rendah</option>
+              <option value="Sedang" selected>Sedang</option>
+              <option value="Tinggi">Tinggi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Deskripsi Kendala</label>
+            <textarea id="description" rows="3" placeholder="Jelaskan detail kendala teknis yang dialami..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Kirim Tiket Kendala</button>
+        </form>
+      </section>
+
+      <!-- Daftar & Tabel Tiket -->
+      <section class="card table-section">
+        <div class="table-header">
+          <h3>📋 Daftar Tiket Kendala</h3>
+          <div class="filters">
+            <input type="text" id="search-input" placeholder="Cari pelapor/kendala..." oninput="filterTickets()">
+            <select id="status-filter" onchange="filterTickets()">
+              <option value="ALL">Semua Status</option>
+              <option value="Masuk">Masuk</option>
+              <option value="Dalam Proses">Dalam Proses</option>
+              <option value="Selesai">Selesai</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Pelapor</th>
+                <th>Kategori</th>
+                <th>Prioritas</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="ticket-table-body">
+              <!-- Data dimasukkan secara dinamis via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
